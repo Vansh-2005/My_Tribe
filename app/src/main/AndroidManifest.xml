@@ -13,6 +13,18 @@
         android:theme="@style/Theme.MyTribe"
         tools:targetApi="31">
         <activity
+            android:name=".Authentication.Forgot_Password_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Authentication.Login_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Authentication.Register_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Splash_Sceen.Splash_Screen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
