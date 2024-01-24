@@ -52,5 +52,26 @@
         </item>
 
     </style>
+    <style name="transparentbottombar" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@color/bottombar</item>
+        <item name="itemIconTint">@color/icon</item>
 
+
+    </style>
+
+    <style name="Outlinebottomnavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="itemTextColor">@drawable/bottom_nav_item_outline_color</item>
+        <item name="itemIconTint">@drawable/bottom_nav_item_outline_color</item>
+        <item name="android:background">@color/bottombar</item>
+
+
+    </style>
+
+    <style name="bottomnavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="itemTextColor">@drawable/bottom_nav_item_outline_color</item>
+        <item name="itemIconTint">@drawable/bottom_nav_item_outline_color</item>
+        <item name="android:background">@color/bottombar2</item>
+
+
+    </style>
 </resources>
