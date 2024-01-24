@@ -1,3 +1,29 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">My Tribe</string>
+    <string name="campus_app" tools:ignore="ExtraTranslation">CAMPUS APP</string>
+    <string name="create_new_" tools:ignore="ExtraTranslation">Create new account</string>
+    <string name="forgot_pass" tools:ignore="ExtraTranslation">forgot password ?</string>
+    <string name="click_here" tools:ignore="ExtraTranslation"><u>click here</u></string>
+    <string name="login" tools:ignore="ExtraTranslation"><u>Login</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">Start</string>
+    <string name="close">Close</string>
+    <string name="mainactivity">MainActivity</string>
+    <string name="to_reset_pa">To reset password\n we will send you a link on your registered email address</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="logout"><u>Logout</u></string>
+    <string name="upcoming_ev">Upcoming Events</string>
+    <string name="upcoming_ev3">Upcoming\nEvents</string>
+    <string name="projects2">Projects</string>
+    <string name="search_hint">Search events,projects,communities</string>
+    <string name="art">Art</string>
+    <string name="it_seems_li">it seems like you haven\'t participated in any yet</string>
+    <string name="projects5">Projects</string>
+    <string name="communities2">Communities</string>
+    <string name="communities">Communities</string>
+    <string name="information">Information &amp; Technology</string>
+    <string name="cultural">Cultural</string>
+    <string name="more_">more ></string>
+    <string name="projects">Projects</string>
 </resources>

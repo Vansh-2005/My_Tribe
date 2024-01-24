@@ -1,4 +1,4 @@
-package com.mca.vnkyv.mytribe.Authentication;
+package com.mca.vnkyv.mytribe.Student.Student_Dashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.mca.vnkyv.mytribe.R;
 
-public class Register_Activity extends AppCompatActivity {
+public class Home_Page extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_home_page);
     }
 }

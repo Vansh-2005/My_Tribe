@@ -13,19 +13,21 @@
         android:theme="@style/Theme.MyTribe"
         tools:targetApi="31">
         <activity
-            android:name=".Authentication.Forgot_Password_Activity"
+            android:name=".Student.Student_Dashboard.Home_Page"
             android:exported="false" />
         <activity
-            android:name=".Authentication.Login_Activity"
+            android:name=".Student.Authentication.Forgot_Password_Activity"
             android:exported="false" />
         <activity
-            android:name=".Authentication.Register_Activity"
+            android:name=".Student.Authentication.Login_Activity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".Student.Authentication.Register_Activity"
             android:exported="false" />
         <activity
-            android:name=".Splash_Sceen.Splash_Screen"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".Student.Splash_Sceen.Splash_Screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
