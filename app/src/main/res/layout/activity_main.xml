@@ -44,6 +44,7 @@
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
         android:fitsSystemWindows="false"
+        app:headerLayout="@layout/dashboard_header"
         app:itemTextAppearance="?android:attr/textAppearanceMedium"
         android:layout_gravity="start"
         />

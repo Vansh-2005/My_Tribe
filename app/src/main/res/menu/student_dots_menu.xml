@@ -4,13 +4,13 @@
     <item
 
         android:id="@+id/student_logout"
-        app:showAsAction="never"
-        android:title="Logout" />
+        android:title="Logout"
+        app:showAsAction="never" />
     <item
 
         android:id="@+id/action_add"
-        app:showAsAction="always"
         android:icon="@drawable/add_user_icon"
-        android:title="" />
+        android:title=""
+        app:showAsAction="always" />
 
 </menu>
