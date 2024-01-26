@@ -34,6 +34,7 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.166"
@@ -47,11 +48,13 @@
                     android:background="@drawable/register_edit_bg"
                     android:hint="first name"
                     android:padding="6dp"
+                    android:layout_marginBottom="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="#80FFFFFF"
                     android:textSize="16dp"
                     app:layout_constraintBottom_toTopOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.505"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -62,8 +65,11 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText2"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText2"
@@ -72,6 +78,7 @@
                     android:background="@drawable/register_edit_bg"
                     android:hint="first name"
                     android:padding="6dp"
+                    android:layout_marginBottom="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="#80FFFFFF"
                     android:textSize="16dp"
@@ -87,8 +94,11 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText3"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText2"
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText3"
@@ -112,8 +122,11 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText4"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText3" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText3"
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText4"
@@ -122,6 +135,7 @@
                     android:background="@drawable/register_edit_bg"
                     android:hint="first name"
                     android:padding="6dp"
+                    android:layout_marginBottom="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="#80FFFFFF"
                     android:textSize="16dp"
@@ -137,8 +151,11 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText5"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText4" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText4"
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText5"
@@ -147,6 +164,7 @@
                     android:background="@drawable/register_edit_bg"
                     android:hint="first name"
                     android:padding="6dp"
+                    android:layout_marginBottom="8dp"
                     android:textColor="@color/white"
                     android:textColorHint="#80FFFFFF"
                     android:textSize="16dp"
@@ -162,8 +180,11 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText6"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText5" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText5"
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText6"
@@ -171,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/register_edit_bg"
                     android:hint="first name"
+                    android:layout_marginBottom="8dp"
                     android:padding="6dp"
                     android:textColor="@color/white"
                     android:textColorHint="#80FFFFFF"
@@ -187,8 +209,11 @@
                     android:text="First name"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText7"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText6" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText6"
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText7"
@@ -196,6 +221,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/register_edit_bg"
                     android:hint="first name"
+                    android:layout_marginBottom="15dp"
                     android:padding="6dp"
                     android:textColor="@color/white"
                     android:textColorHint="#80FFFFFF"
@@ -213,6 +239,7 @@
                     android:text="Register"
                     android:textColor="@color/white"
                     android:textSize="16dp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -220,7 +247,7 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
@@ -231,6 +258,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:padding="4dp"
                         android:text="Already have an account?"
                         android:textColor="@color/white" />
@@ -239,6 +267,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Login"
+                        android:layout_marginBottom="4dp"
                         android:textColor="#00a3ff" />
 
                 </LinearLayout>
