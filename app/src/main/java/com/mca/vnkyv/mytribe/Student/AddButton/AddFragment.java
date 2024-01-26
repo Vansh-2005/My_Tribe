@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.mca.vnkyv.mytribe.R;
 
-public class NewFragment extends Fragment {
+public class AddFragment extends Fragment {
 
      @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,24 +48,4 @@ public class NewFragment extends Fragment {
 
          return view;
      }
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.student_dots_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.student_logout) {
-            Toast.makeText(getActivity(), "Logout", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (id == R.id.action_add) {
-            Toast.makeText(getActivity(), "Notification", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

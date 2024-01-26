@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_search"/>
 
     <fragment android:id="@+id/navigation_newproject"
-        android:name="com.mca.vnkyv.mytribe.Student.AddButton.NewFragment"
+        android:name="com.mca.vnkyv.mytribe.Student.AddButton.AddFragment"
         android:label="New Project"
         tools:layout="@layout/fragment_new"/>
 

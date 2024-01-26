@@ -22,6 +22,7 @@ public class Login_Activity extends AppCompatActivity {
     private MaterialCardView student_pannel,admin_pannel;
     private TextView fgpassword , newAccount,continue_btn;
     private Button Admin_login,Student_login,Admin_continue;
+    private TextView click_here_forgot,create_new_account;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,6 +44,8 @@ public class Login_Activity extends AppCompatActivity {
         admin_pannel = findViewById(R.id.admin_pannel);
         Student_login = findViewById(R.id.Student_login);
         Admin_continue =findViewById(R.id.admin_continue);
+        click_here_forgot=findViewById(R.id.click_here_forgot);
+        create_new_account=findViewById(R.id.create_new_account);
 
         continue_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,4 +86,20 @@ public class Login_Activity extends AppCompatActivity {
 //                finish();
 //            }
 //        });
+        click_here_forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity.this, Forgot_Password_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        create_new_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity.this, Register_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }}

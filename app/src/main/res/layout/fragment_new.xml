@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2c2f49"
-    tools:context=".Student.AddButton.NewFragment">
+    tools:context=".Student.AddButton.AddFragment">
+
 
 
 </FrameLayout>

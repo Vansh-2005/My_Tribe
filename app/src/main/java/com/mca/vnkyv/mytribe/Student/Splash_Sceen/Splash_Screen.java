@@ -24,17 +24,19 @@ public class Splash_Screen extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.splash_notificationbar_color));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.splash_notificationbar_color));
 
 
         Handler handler = new Handler();
-handler.postDelayed(new Runnable() {
-    @Override
-    public void run() {
-        Intent intent = new Intent(Splash_Screen.this, Login_Activity.class);
-        startActivity(intent);
-        finish();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(Splash_Screen.this, Login_Activity.class);
+                startActivity(i);
+                finish();
+            }
+        },2000);
     }
-},2000);
-    }
+
 }
