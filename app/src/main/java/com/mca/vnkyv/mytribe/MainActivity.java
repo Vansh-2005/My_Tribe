@@ -12,10 +12,18 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -25,6 +33,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
+    private TextView headerUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         navController = Navigation.findNavController(this, R.id.frame_layout);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.dashboard_item);
+
+//        to frct header name and image
+        headerUsername = navigationView.getHeaderView(0).findViewById(R.id.header_username);
+        fetchAndSetUsername(headerUsername);
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.start, R.string.close);
@@ -102,5 +115,29 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         return true;
     }
+    private void fetchAndSetUsername(final TextView headerUsername) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
+        if (currentUser != null) {
+            DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid());
+
+            userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String username = dataSnapshot.child("username").getValue(String.class);
+                        if (username != null) {
+                            headerUsername.setText(username);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle the error
+                }
+            });
+        }
+    }
 }

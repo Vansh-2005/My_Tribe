@@ -7,12 +7,15 @@
     android:background="#2C2F49"
     tools:context=".Student.Authentication.Login_Activity">
 
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/admin_pannel"
@@ -86,6 +89,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="165dp">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +116,7 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="149dp"
                     tools:layout_editor_absoluteY="119dp" />
+
             </LinearLayout>
 
             <RelativeLayout
@@ -264,20 +269,20 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:text="Username"
+                    android:text="Email ID   "
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     tools:layout_editor_absoluteX="32dp"
                     tools:layout_editor_absoluteY="120dp" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username"
+                    android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
                     android:autofillHints="username"
                     android:background="@drawable/login_bg"
-                    android:hint="username"
+                    android:hint="email"
                     android:inputType="text"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -301,13 +306,13 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
-                    android:text="Password "
+                    android:text="Password"
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password3"
+                    android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginStart="130dp"
@@ -344,7 +349,7 @@
                 android:layout_marginTop="275dp">
 
                 <Button
-                    android:id="@+id/login"
+                    android:id="@+id/login_btn"
                     android:layout_width="120dp"
                     android:layout_height="43dp"
                     android:layout_margin="20dp"
@@ -362,8 +367,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="335dp">
+                android:layout_marginTop="335dp"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/forgot_pass"
@@ -389,8 +394,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="360dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="360dp"
                 android:gravity="center_horizontal">
 
                 <TextView
@@ -398,10 +403,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/create_new_"
                     android:layout_gravity="center_horizontal"
-                    android:textAppearance="@style/create_new_"
-                    />
+                    android:text="@string/create_new_"
+                    android:textAppearance="@style/create_new_" />
 
             </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.mca.vnkyv.mytribe.Student.AddButton;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,11 +19,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.mca.vnkyv.mytribe.R;
+import com.mca.vnkyv.mytribe.Student.AddButton.Community.Add_Community_Activity;
 
 public class AddFragment extends Fragment {
+
+ private Button add_Community_btn;
 
      @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +50,16 @@ public class AddFragment extends Fragment {
 
          window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
          window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.profile_notificationbar_color));
+
+      add_Community_btn=view.findViewById(R.id.add_Community_btn);
+
+      add_Community_btn.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+        Intent i = new Intent(getActivity(), Add_Community_Activity.class);
+        startActivity(i);
+       }
+      });
 
          return view;
      }

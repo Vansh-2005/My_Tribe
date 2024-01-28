@@ -18,11 +18,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mca.vnkyv.mytribe.R;
 
 public class ProfileFragment extends Fragment {
+    private TextView usernameTextView,fullNameTextView,emailTextView,dobTextView;
+
+    private DatabaseReference userReference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +56,45 @@ public class ProfileFragment extends Fragment {
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.profile_notificationbar_color));
+
+        usernameTextView = view.findViewById(R.id.username);
+        fullNameTextView = view.findViewById(R.id.fullname);
+        emailTextView = view.findViewById(R.id.email);
+        dobTextView = view.findViewById(R.id.dob);
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            userReference = FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid());
+            userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        // Retrieve specific fields from the database
+                        String username = dataSnapshot.child("username").getValue(String.class);
+                        String firstName = dataSnapshot.child("firstName").getValue(String.class);
+                        String lastName = dataSnapshot.child("lastName").getValue(String.class);
+                        String email = dataSnapshot.child("email").getValue(String.class);
+                        String dob = dataSnapshot.child("dob").getValue(String.class);
+
+                        // Combine first name and last name to get full name
+                        String fullName = firstName + " " + lastName;
+
+                        // Update UI with retrieved data
+                        usernameTextView.setText(username);
+                        fullNameTextView.setText(fullName);
+                        emailTextView.setText(email);
+                        dobTextView.setText(dob);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle the error
+                }
+            });
+        }
+
 
 
         return view;

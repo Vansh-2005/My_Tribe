@@ -74,4 +74,11 @@
 
 
     </style>
+    <style name="MyEditTextHintStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="MyEditTextTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
