@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_new"/>
 
     <fragment android:id="@+id/navigation_activity"
-        android:name="com.mca.vnkyv.mytribe.Student.Activity.ActivityFragment"
+        android:name="com.mca.vnkyv.mytribe.Student.My_Activity.ActivityFragment"
         android:label="Activity"
         tools:layout="@layout/fragment_activity"/>
 

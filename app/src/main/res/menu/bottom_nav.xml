@@ -11,13 +11,13 @@
         android:title="Search"/>
 
     <item android:id="@+id/navigation_newproject"
-        android:title="New project"
+        android:title="New"
         android:icon="@drawable/addbtn"
         />
 
     <item android:id="@+id/navigation_activity"
         android:icon="@drawable/activity_icon"
-        android:title="Activity"/>
+        android:title="My Activity"/>
 
     <item android:id="@+id/navigation_profile"
         android:icon="@drawable/profile_icon"

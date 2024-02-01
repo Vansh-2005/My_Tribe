@@ -41,7 +41,7 @@ public class Register_Activity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
 
-        ColorDrawable colorDrawable  = new ColorDrawable(Color.parseColor("#671935"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#671935"));
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle("User Registration");
 
@@ -76,9 +76,9 @@ public class Register_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                 Intent intent = new Intent(Register_Activity.this, Login_Activity.class);
-                 startActivity(intent);
-                 finish();
+                Intent intent = new Intent(Register_Activity.this, Login_Activity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -108,6 +108,9 @@ public class Register_Activity extends AppCompatActivity {
 
                         // Handle your successful registration here
                         Toast.makeText(Register_Activity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Register_Activity.this, Login_Activity.class);
+                        startActivity(i);
+                        finish();
                     } else {
                         // If registration fails, display a message to the user.
                         Toast.makeText(Register_Activity.this, "Registration failed: " + task.getException(), Toast.LENGTH_SHORT).show();

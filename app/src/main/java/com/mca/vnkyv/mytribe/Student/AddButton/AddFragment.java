@@ -24,10 +24,12 @@ import android.widget.Toast;
 
 import com.mca.vnkyv.mytribe.R;
 import com.mca.vnkyv.mytribe.Student.AddButton.Community.Add_Community_Activity;
+import com.mca.vnkyv.mytribe.Student.AddButton.Event.Add_Event_Activity;
+import com.mca.vnkyv.mytribe.Student.AddButton.Project.Add_Project_Activity;
 
 public class AddFragment extends Fragment {
 
- private Button add_Community_btn;
+ private Button add_Community_btn,add_event_btn,add_project_btn;
 
      @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +54,8 @@ public class AddFragment extends Fragment {
          window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.profile_notificationbar_color));
 
       add_Community_btn=view.findViewById(R.id.add_Community_btn);
+         add_event_btn=view.findViewById(R.id.add_event_btn);
+         add_project_btn=view.findViewById(R.id.add_Project_btn);
 
       add_Community_btn.setOnClickListener(new View.OnClickListener() {
        @Override
@@ -61,6 +65,20 @@ public class AddFragment extends Fragment {
        }
       });
 
+         add_event_btn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent i = new Intent(getActivity(), Add_Event_Activity.class);
+                 startActivity(i);
+             }
+         });
+         add_project_btn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent i = new Intent(getActivity(), Add_Project_Activity.class);
+                 startActivity(i);
+             }
+         });
          return view;
      }
 }

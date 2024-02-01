@@ -1,12 +1,19 @@
 package com.mca.vnkyv.mytribe.Student.Home;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -34,10 +41,13 @@ public class HomeFragment extends Fragment {
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         Drawable d = getResources().getDrawable(R.drawable.toolbar);
         actionBar.setBackgroundDrawable(d);
+        setHasOptionsMenu(true);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userReference = FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid());
+
+
 
         userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -58,7 +68,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        setHasOptionsMenu(true);
 
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -67,11 +76,28 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.home_toolbar_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.search_image) {
+            Intent i = new Intent(getActivity(), RealtimeImageLabelingActivity.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     private String capitalizeFirstLetter(String input) {
         if (input == null || input.isEmpty()) {
             return input;
         }
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
+
 }

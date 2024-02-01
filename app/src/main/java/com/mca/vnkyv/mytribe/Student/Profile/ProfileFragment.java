@@ -1,5 +1,6 @@
 package com.mca.vnkyv.mytribe.Student.Profile;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -31,9 +32,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.mca.vnkyv.mytribe.R;
 
 public class ProfileFragment extends Fragment {
-    private TextView usernameTextView,fullNameTextView,emailTextView,dobTextView;
+    private TextView usernameTextView,fullNameTextView,emailTextView,dobTextView,community_countTextView
+            ,event_countTextView,project_countTextView;
 
     private DatabaseReference userReference;
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +64,9 @@ public class ProfileFragment extends Fragment {
         fullNameTextView = view.findViewById(R.id.fullname);
         emailTextView = view.findViewById(R.id.email);
         dobTextView = view.findViewById(R.id.dob);
+        community_countTextView = view.findViewById(R.id.community_count);
+        event_countTextView = view.findViewById(R.id.total_event_count);
+        project_countTextView = view.findViewById(R.id.total_project_count);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -77,6 +83,16 @@ public class ProfileFragment extends Fragment {
                         String email = dataSnapshot.child("email").getValue(String.class);
                         String dob = dataSnapshot.child("dob").getValue(String.class);
 
+                        // Retrieve the "community" node
+                        DataSnapshot communitySnapshot = dataSnapshot.child("community");
+                        DataSnapshot eventSnapshot = dataSnapshot.child("event");
+                        DataSnapshot projectSnapshot = dataSnapshot.child("project");
+
+                        // Calculate the count of communities
+                        long communityCount = communitySnapshot.getChildrenCount();
+                        long eventCount = eventSnapshot.getChildrenCount();
+                        long projectCount = projectSnapshot.getChildrenCount();
+
                         // Combine first name and last name to get full name
                         String fullName = firstName + " " + lastName;
 
@@ -85,6 +101,9 @@ public class ProfileFragment extends Fragment {
                         fullNameTextView.setText(fullName);
                         emailTextView.setText(email);
                         dobTextView.setText(dob);
+                        community_countTextView.setText(String.valueOf(communityCount)); // Convert count to String
+                        event_countTextView.setText(String.valueOf(eventCount)); // Convert count to String
+                        project_countTextView.setText(String.valueOf(projectCount)); // Convert count to String
                     }
                 }
 

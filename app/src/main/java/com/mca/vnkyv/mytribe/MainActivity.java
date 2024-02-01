@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.dashboard_item);
 
+
 //        to frct header name and image
         headerUsername = navigationView.getHeaderView(0).findViewById(R.id.header_username);
         fetchAndSetUsername(headerUsername);
@@ -94,7 +95,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             return true;
         }
 
-        return true;
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -115,6 +117,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         return true;
     }
+
+
     private void fetchAndSetUsername(final TextView headerUsername) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -140,4 +144,5 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             });
         }
     }
+
 }
