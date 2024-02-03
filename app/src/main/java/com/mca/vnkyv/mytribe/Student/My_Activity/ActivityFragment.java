@@ -83,19 +83,21 @@ public class ActivityFragment extends Fragment {
         recyclerViewEvents.setAdapter(eventAdapter);
 
         // Retrieve Projects and update the adapter
-        retrieveProjects(projectAdapter);
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
 
-        // Retrieve Communities and update the adapter
-        retrieveCommunities(communityAdapter);
+            // Call the methods with the userId
+            retrieveProjects(projectAdapter, userId);
+            retrieveCommunities(communityAdapter, userId);
+            retrieveEvents(eventAdapter, userId);
+        }
 
-        // Retrieve Events and update the adapter
-        retrieveEvents(eventAdapter);
 
         return view;
     }
 
-    private void retrieveProjects(ProjectAdapter adapter) {
-        projectsReference.addValueEventListener(new ValueEventListener() {
+    private void retrieveProjects(ProjectAdapter adapter, String userId) {
+        projectsReference.orderByChild("commNote").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Project> projectList = new ArrayList<>();
@@ -116,8 +118,8 @@ public class ActivityFragment extends Fragment {
         });
     }
 
-    private void retrieveCommunities(CommunityAdapter adapter) {
-        communitiesReference.addValueEventListener(new ValueEventListener() {
+    private void retrieveCommunities(CommunityAdapter adapter, String userId) {
+        communitiesReference.orderByChild("commNote").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Community> communityList = new ArrayList<>();
@@ -138,8 +140,8 @@ public class ActivityFragment extends Fragment {
         });
     }
 
-    private void retrieveEvents(EventAdapter adapter) {
-        eventsReference.addValueEventListener(new ValueEventListener() {
+    private void retrieveEvents(EventAdapter adapter, String userId) {
+        eventsReference.orderByChild("commNote").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Event> eventList = new ArrayList<>();

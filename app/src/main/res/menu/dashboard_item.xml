@@ -14,13 +14,18 @@
         android:icon="@drawable/about_us"
         />
 
-    <item android:id="@+id/dashboard_term"
+    <item android:id="@+id/dashboard_privacy"
         android:icon="@drawable/privacy"
         android:title="Privacy &amp; policy"/>
 
-    <item android:id="@+id/dashboard_privacy"
+    <item android:id="@+id/dashboard_term"
         android:icon="@drawable/condition"
         android:title="Term &amp; condition"
+
+        />
+    <item android:id="@+id/dashboard_developer"
+        android:icon="@drawable/condition"
+        android:title="Developer Contact"
 
         />
 
