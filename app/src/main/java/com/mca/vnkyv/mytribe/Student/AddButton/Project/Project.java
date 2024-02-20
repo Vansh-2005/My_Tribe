@@ -5,18 +5,21 @@ public class Project {
     private String description;
     private String imageUri;
     private String uid;
+    private String creatorName;
     private String course;
     private String year;
     private String creatorEmail;
     private String commNote;
-    private String creatorName;
+    private String startDate;
+    private String endDate;
+    private String status;
 
     // Default constructor required for calls to DataSnapshot.getValue(Community.class)
     public Project() {
         // Default constructor with no arguments
     }
 
-    public Project(String title, String description, String imageUri, String uid, String creatorName, String course, String year, String creatorEmail, String commNote) {
+    public Project(String title, String description, String imageUri, String uid, String creatorName, String course, String year, String creatorEmail, String commNote, String startDate, String endDate, String status) {
         this.title = title;
         this.description = description;
         this.imageUri = imageUri;
@@ -26,6 +29,9 @@ public class Project {
         this.year = year;
         this.creatorEmail = creatorEmail;
         this.commNote = commNote;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
     }
 
     // Getters and setters...
@@ -100,5 +106,29 @@ public class Project {
 
     public void setCommNote(String commNote) {
         this.commNote = commNote;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

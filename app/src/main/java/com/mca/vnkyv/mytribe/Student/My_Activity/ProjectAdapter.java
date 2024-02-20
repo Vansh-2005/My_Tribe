@@ -48,7 +48,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
                 .into(holder.projectImageView);
 
         holder.titleTextView.setText(project.getTitle());
-        holder.descriptionTextView.setText(project.getDescription());
+        holder.creatorName.setText(project.getCreatorName());
     }
 
     @Override
@@ -60,13 +60,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
         ImageView projectImageView;
         TextView titleTextView;
-        TextView descriptionTextView;
+        TextView creatorName;
 
         public ProjectViewHolder(@NonNull View itemView) {
             super(itemView);
             projectImageView = itemView.findViewById(R.id.communityImageView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
-            descriptionTextView = itemView.findViewById(R.id.creatorNameTextView);
+            creatorName = itemView.findViewById(R.id.creatorNameTextView);
         }
     }
 }

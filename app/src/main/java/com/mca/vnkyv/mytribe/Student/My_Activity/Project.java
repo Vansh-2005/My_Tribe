@@ -5,17 +5,21 @@ public class Project {
     private String description;
     private String date;
     private String imageUri;
+    private String creatorName;
+    private String status;
 
     // Default constructor required for Firebase
     public Project() {
     }
 
     // Constructor with parameters
-    public Project(String title, String description, String date, String imageUri) {
+    public Project(String title, String description, String date, String imageUri, String creatorName, String status) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.imageUri = imageUri;
+        this.creatorName = creatorName;
+        this.status = status;
     }
 
     // Getter and setter methods
@@ -49,5 +53,22 @@ public class Project {
 
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
+    }
+
+    public String getCreatorName() {
+        return creatorName;
+    }
+
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

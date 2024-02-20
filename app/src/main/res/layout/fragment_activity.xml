@@ -29,18 +29,6 @@
            app:layout_constraintTop_toTopOf="parent"
            android:paddingLeft="8dp"/>
 
-       <TextView
-           android:id="@+id/project_view_all"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="View all >"
-           android:textColor="#00a3ff"
-           android:textSize="16dp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           android:paddingRight="4dp"/>
-
    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -69,18 +57,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:paddingLeft="8dp"/>
 
-            <TextView
-                android:id="@+id/comm_view_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View all >"
-                android:textColor="#00a3ff"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:paddingRight="4dp"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -107,18 +83,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:paddingLeft="8dp"/>
-
-            <TextView
-                android:id="@+id/event_view_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View all >"
-                android:textColor="#00a3ff"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:paddingRight="4dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

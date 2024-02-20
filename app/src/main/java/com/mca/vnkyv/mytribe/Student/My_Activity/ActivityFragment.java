@@ -1,11 +1,12 @@
 package com.mca.vnkyv.mytribe.Student.My_Activity;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -97,7 +98,7 @@ public class ActivityFragment extends Fragment {
     }
 
     private void retrieveProjects(ProjectAdapter adapter, String userId) {
-        projectsReference.orderByChild("commNote").equalTo(userId).addValueEventListener(new ValueEventListener() {
+        projectsReference.orderByChild("uid").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Project> projectList = new ArrayList<>();
@@ -119,7 +120,7 @@ public class ActivityFragment extends Fragment {
     }
 
     private void retrieveCommunities(CommunityAdapter adapter, String userId) {
-        communitiesReference.orderByChild("commNote").equalTo(userId).addValueEventListener(new ValueEventListener() {
+        communitiesReference.orderByChild("uid").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Community> communityList = new ArrayList<>();
@@ -141,7 +142,7 @@ public class ActivityFragment extends Fragment {
     }
 
     private void retrieveEvents(EventAdapter adapter, String userId) {
-        eventsReference.orderByChild("commNote").equalTo(userId).addValueEventListener(new ValueEventListener() {
+        eventsReference.orderByChild("uid").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Event> eventList = new ArrayList<>();
@@ -160,5 +161,7 @@ public class ActivityFragment extends Fragment {
                 Log.e("ActivityFragment", "onCancelled: " + databaseError.getMessage());
             }
         });
+
     }
+
 }
