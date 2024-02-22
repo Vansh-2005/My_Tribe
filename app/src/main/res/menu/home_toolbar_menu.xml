@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/voice_search"
+        android:icon="@drawable/mic_icon"
+        android:title=""
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/search_image"
         android:icon="@drawable/image_scanner_icon"
         android:title=""
         app:showAsAction="always" />
+
 </menu>
