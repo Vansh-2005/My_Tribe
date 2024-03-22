@@ -32,6 +32,7 @@ import com.mca.vnkyv.mytribe.Student.Developer_Contact.Developer_Contact_Activit
 import com.mca.vnkyv.mytribe.Student.Privacy_Policy.Privacy_Policy_Activity;
 import com.mca.vnkyv.mytribe.Student.Terms_Condition.Terms_Condition_Activity;
 
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
