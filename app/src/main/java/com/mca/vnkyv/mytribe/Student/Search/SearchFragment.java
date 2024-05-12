@@ -66,6 +66,7 @@ public class SearchFragment extends Fragment {
         searchEditText = view.findViewById(R.id.searchEditText);
         recyclerView = view.findViewById(R.id.recyclerView);
         projectList = new ArrayList<>();
+
         projectAdapter = new ProjectAdapter(getActivity(), projectList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(projectAdapter);

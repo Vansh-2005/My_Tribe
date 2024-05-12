@@ -1,16 +1,11 @@
 package com.mca.vnkyv.mytribe.Student.Profile;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,9 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,44 +35,57 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mca.vnkyv.mytribe.R;
 
+import static android.app.Activity.RESULT_OK;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileFragment extends Fragment {
-    private TextView usernameTextView,fullNameTextView,emailTextView,dobTextView,community_countTextView
-            ,event_countTextView,project_countTextView;
+    private TextView usernameTextView, fullNameTextView, emailTextView, dobTextView,
+            communityCountTextView, eventCountTextView, projectCountTextView;
 
     private DatabaseReference userReference;
+    private CircleImageView profileImage;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Uri imageUri;
+
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#2c2f49"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getActivity(), R.color.profile_notificationbar_color)));
         actionBar.setTitle("My Profile");
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
-        setHasOptionsMenu(true);
-
 
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.profile_notificationbar_color));
 
+        profileImage = view.findViewById(R.id.profile_image);
         usernameTextView = view.findViewById(R.id.username);
         fullNameTextView = view.findViewById(R.id.fullname);
         emailTextView = view.findViewById(R.id.email);
         dobTextView = view.findViewById(R.id.dob);
-        community_countTextView = view.findViewById(R.id.community_count);
-        event_countTextView = view.findViewById(R.id.total_event_count);
-        project_countTextView = view.findViewById(R.id.total_project_count);
+        communityCountTextView = view.findViewById(R.id.community_count);
+        eventCountTextView = view.findViewById(R.id.total_event_count);
+        projectCountTextView = view.findViewById(R.id.total_project_count);
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openImagePicker();
+            }
+        });
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -76,34 +95,33 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        // Retrieve specific fields from the database
                         String username = dataSnapshot.child("username").getValue(String.class);
                         String firstName = dataSnapshot.child("firstName").getValue(String.class);
                         String lastName = dataSnapshot.child("lastName").getValue(String.class);
                         String email = dataSnapshot.child("email").getValue(String.class);
                         String dob = dataSnapshot.child("dob").getValue(String.class);
+                        String profileImageUrl = dataSnapshot.child("profileImageUrl").getValue(String.class); // Fetch profile image URL
 
-                        // Retrieve the "community" node
                         DataSnapshot communitySnapshot = dataSnapshot.child("community");
                         DataSnapshot eventSnapshot = dataSnapshot.child("event");
                         DataSnapshot projectSnapshot = dataSnapshot.child("project");
 
-                        // Calculate the count of communities
                         long communityCount = communitySnapshot.getChildrenCount();
                         long eventCount = eventSnapshot.getChildrenCount();
                         long projectCount = projectSnapshot.getChildrenCount();
 
-                        // Combine first name and last name to get full name
                         String fullName = firstName + " " + lastName;
 
-                        // Update UI with retrieved data
                         usernameTextView.setText(username);
                         fullNameTextView.setText(fullName);
                         emailTextView.setText(email);
                         dobTextView.setText(dob);
-                        community_countTextView.setText(String.valueOf(communityCount)); // Convert count to String
-                        event_countTextView.setText(String.valueOf(eventCount)); // Convert count to String
-                        project_countTextView.setText(String.valueOf(projectCount)); // Convert count to String
+                        communityCountTextView.setText(String.valueOf(communityCount));
+                        eventCountTextView.setText(String.valueOf(eventCount));
+                        projectCountTextView.setText(String.valueOf(projectCount));
+                        Glide.with(requireContext())
+                                .load(profileImageUrl)
+                                .into(profileImage);
                     }
                 }
 
@@ -114,9 +132,68 @@ public class ProfileFragment extends Fragment {
             });
         }
 
-
-
         return view;
+    }
+
+    private void openImagePicker() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            uploadProfileImage();
+        }
+    }
+
+    private void uploadProfileImage() {
+        if (imageUri != null) {
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("profile_images");
+            final StorageReference imageRef = storageRef.child(System.currentTimeMillis() + ".jpg");
+
+            // Show progress bar while uploading
+            ProgressDialog progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setTitle("Uploading Image...");
+            progressDialog.setMessage("Please wait while we upload and process the image.");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
+
+            imageRef.putFile(imageUri)
+                    .addOnProgressListener(snapshot -> {
+                        double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                        progressDialog.setMessage("Uploading " + (int) progress + "%");
+                    })
+                    .addOnSuccessListener(taskSnapshot -> {
+                        imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                            String imageUrl = uri.toString();
+                            saveImageUrlToDatabase(imageUrl);
+                            progressDialog.dismiss();
+                            // Load the uploaded image into ImageView
+                        });
+                    })
+                    .addOnFailureListener(e -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Failed to upload image", Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    private void saveImageUrlToDatabase(String imageUrl) {
+        if (userReference != null) {
+            userReference.child("profileImageUrl").setValue(imageUrl)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(getActivity(), "Profile image uploaded successfully", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(getActivity(), "Failed to save profile image URL to database", Toast.LENGTH_SHORT).show();
+                    });
+        }
     }
 
     @Override

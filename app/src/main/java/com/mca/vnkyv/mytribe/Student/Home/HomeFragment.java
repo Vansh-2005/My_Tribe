@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
         recyclerViewProjects.setAdapter(projectAdapter);
 
         RecyclerView recyclerViewCommunities = view.findViewById(R.id.community_recyclerView1);
-        recyclerViewCommunities.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewCommunities.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
         CommunityAdapter communityAdapter = new CommunityAdapter(requireContext(), new ArrayList<>());
         recyclerViewCommunities.setAdapter(communityAdapter);
 

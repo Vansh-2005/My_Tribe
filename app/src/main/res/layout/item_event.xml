@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="360dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
+    android:clipToOutline="true"
+    android:layout_margin="0dp"
     android:padding="8dp">
 
     <ImageView
         android:id="@+id/communityImageView"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="170dp"
         android:background="@drawable/community_image_background"
         android:clipToOutline="true"
         android:scaleType="centerCrop"
@@ -62,5 +63,6 @@
             android:textSize="10dp"
             android:textAllCaps="true"/>
     </LinearLayout>
+
 
 </LinearLayout>
